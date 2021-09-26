@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>math tube</title>
+	<style>
+		div{
+			position: absolute;
+		}
+		section{
+			position: absolute;
+			top:  400px;
+		}
+		#bar{
+		  position: fixed;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<img src="image/plot2.png" alt="math plot" class="plot">
+		<img src="image/1.png" alt="math tube which means 1" class="white">
+		<img src="image/2.png" alt="math tube which means 2" class="red">
+		<img src="image/3.png" alt="math tube which means 3" class="lg">
+		<img src="image/4.png" alt="math tube which means 4" class="lp">
+		<img src="image/5.png" alt="math tube which means 5" class="yellow">
+		<img src="image/6.png" alt="math tube which means 6" class="green">
+		<img src="image/7.png" alt="math tube which means 7" class="black">
+		<img src="image/8.png" alt="math tube which means 8" class="brown">
+		<img src="image/9.png" alt="math tube which means 9" class="blue">
+		<img src="image/10.png" alt="math tube which means 10" class="orange">
+		<img src="image/plus.png" alt="plus" class="plus">
+		<img src="image/minus.png" alt="minus" class="minus">
+	</div>
+	<section>
+		
+	</section>
+	<script>
+		var num=0;
+
+		function main(select, link) {
+			select.addEventListener('click', add);
+
+			function add() {
+				num = num + 1
+				img = document.createElement('img');
+				img.src = link;
+				img.setAttribute('id', num);
+				img.style.position = 'fixed';
+				sec = document.querySelector('section');
+				sec.appendChild(img);
+				let id = new act(document.getElementById(num));
+			}
+		}
+
+		function act(id) {
+			id.addEventListener('mousedown',start);
+			function start(e) {
+				document.addEventListener('mousemove', move);
+				document.addEventListener('click', stop);
+				console.log(id)
+			};
+
+			function move(e) {
+				id.style.left = e.pageX + "px";
+				id.style.top = e.pageY - window.scrollY + "px";
+			};
+
+			function stop() {
+				document.removeEventListener('mousemove', move);
+				document.removeEventListener('click', stop);
+			};
+		}
+
+		let white = new main(document.querySelector('.white'), 'image/1.png');
+		let red = new main(document.querySelector('.red'), 'image/2.png');
+		let lg = new main(document.querySelector('.lg'), 'image/3.png');
+		let lp = new main(document.querySelector('.lp'), 'image/4.png');
+		let yellow = new main(document.querySelector('.yellow'), 'image/5.png');
+		let green = new main(document.querySelector('.green'), 'image/6.png');
+		let black = new main(document.querySelector('.black'), 'image/7.png');
+		let brown = new main(document.querySelector('.brown'), 'image/8.png');
+		let blue = new main(document.querySelector('.blue'), 'image/9.png');
+		let orange = new main(document.querySelector('.orange'), 'image/10.png');
+		let plus = new main(document.querySelector('.plus'), 'image/plus.png');
+		let minus = new main(document.querySelector('.minus'), 'image/minus.png');
+	</script>
+</body>
+</html>
